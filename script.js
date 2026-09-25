@@ -2,8 +2,8 @@
 const CONFIG = {
   groom: "Shifan",
   bride: "Nasrin",
-  weddingISO: "2026-10-19T12:00:00",
-  dateDisplay: "19th October 2026",
+  weddingISO: "2027-09-19T12:00:00",
+  dateDisplay: "19th September 2027",
   timeDisplay: "12:00 PM",
   venueName: "Nasrin's Home",
   venueAddress: "Nasrin's Home, Negombo, Sri Lanka",
