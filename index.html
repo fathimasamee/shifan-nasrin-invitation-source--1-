@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Shifan & Nasrin — 19 September 2027</title>
+<meta property="og:title" content="Shifan & Nasrin are getting married">
+<meta property="og:description" content="Join us on 19th September 2027, 12:00 PM at Nasrin's Home.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="assets/envelope.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="flash" id="flash"></div>
+
+<!-- ENVELOPE / COVER -->
+<div id="envelopeScreen">
+  <div class="env-wrap">
+    <div class="env-invite">you are cordially invited</div>
+    <div class="envelope-card" id="envelopeCard">
+      <img src="assets/envelope.jpg" alt="Wedding invitation envelope">
+      <div class="tap-hint">TAP TO OPEN</div>
+    </div>
+  </div>
+</div>
+
+<!-- CURTAINS -->
+<div class="curtain" id="curtainL"></div>
+<div class="curtain" id="curtainR"></div>
+
+<!-- MUSIC -->
+<button id="musicBtn" aria-label="Toggle music">
+  <span class="bars"><span></span><span></span><span></span></span>
+</button>
+<audio id="bgm" loop preload="none"></audio>
+
+<!-- REVEAL POPUP -->
+<div id="revealPopup">
+  <div class="pop-icon">💍</div>
+  <div class="pop-title">Date Revealed</div>
+  <div class="pop-sub" id="popSub">19th September 2027</div>
+</div>
+
+<!-- MAIN INVITATION -->
+<!-- MAIN INVITATION -->
+<main id="book">
+
+  <!-- HERO SECTION -->
+  <section id="hero">
+    <div class="bg-zoom"></div>
+    <div class="chandelier-glow"></div>
+    <div class="luxury-overlay"></div>
+    <div class="sparkles"></div>
+    <div class="grain"></div>
+    
+    <div class="content glass-card royal-frame">
+      <div class="royal-crest">
+        <span class="crest-line"></span>
+        <span class="crest-emblem">✦</span>
+        <span class="crest-line"></span>
+      </div>
+      <div class="eyebrow">The Wedding Celebration Of</div>
+      <h1 class="names" id="namesHeading">Shifan<span class="amp">&amp;</span>Nasrin</h1>
+      <div class="rule-royal">
+        <span></span><i>♦</i><span></span>
+      </div>
+      <p class="tagline" id="dateTagline">19th September 2027 · 12:00 PM</p>
+    </div>
+    <div class="scroll-cue"><span>EXPLORE</span><div class="chev"></div></div>
+  </section>
+
+  <!-- MESSAGE SECTION -->
+  <section id="message">
+    <div class="bg-zoom"></div>
+    <div class="chandelier-glow"></div>
+    <div class="luxury-overlay"></div>
+    <div class="sparkles"></div>
+    <div class="grain"></div>
+    
+    <div class="content glass-card royal-frame">
+      <div class="eyebrow">Together With Their Families</div>
+      <p class="message-text" id="messageText">Two hearts, one journey. We would be honoured to have you beside us as we begin our forever — surrounded by the people who mean the most.</p>
+      <div class="rule-royal">
+        <span></span><i>♦</i><span></span>
+      </div>
+      <p class="message-sign">Shifan &amp; Nasrin</p>
+    </div>
+    <div class="scroll-cue"><span>SCROLL</span><div class="chev"></div></div>
+  </section>
+
+  <!-- SCRATCH SECTION -->
+  <section id="scratch">
+    <div class="bg-zoom"></div>
+    <div class="chandelier-glow"></div>
+    <div class="luxury-overlay"></div>
+    <div class="sparkles"></div>
+    <div class="grain"></div>
+    
+    <div class="content glass-card royal-frame">
+      <div class="eyebrow">Honor Our Moment</div>
+      <div class="scratch-frame" id="scratchFrame">
+        <div class="scratch-under">
+          <div class="d1">WE'RE GETTING MARRIED</div>
+          <div class="d2" id="scratchDate">19 SEP 2027</div>
+          <div class="d3" id="scratchTime">12:00 PM</div>
+        </div>
+        <canvas id="scratchCanvas"></canvas>
+      </div>
+      <p class="scratch-hint" id="scratchHint">✦ scratch the gold seal to reveal ✦</p>
+    </div>
+  </section>
+
+  <!-- COUNTDOWN SECTION -->
+  <section id="countdown">
+    <div class="bg-zoom"></div>
+    <div class="chandelier-glow"></div>
+    <div class="luxury-overlay"></div>
+    <div class="sparkles"></div>
+    <div class="grain"></div>
+    
+    <div class="content glass-card royal-frame">
+      <div class="eyebrow">Counting Down The Moments</div>
+      <div class="countdown" id="countdownBoxes">
+        <div class="cd-box"><div class="cd-num" id="cdDays">00</div><div class="cd-label">DAYS</div></div>
+        <div class="cd-box"><div class="cd-num" id="cdHours">00</div><div class="cd-label">HOURS</div></div>
+        <div class="cd-box"><div class="cd-num" id="cdMins">00</div><div class="cd-label">MINS</div></div>
+        <div class="cd-box"><div class="cd-num" id="cdSecs">00</div><div class="cd-label">SECS</div></div>
+      </div>
+    </div>
+    <div class="scroll-cue"><span>SCROLL</span><div class="chev"></div></div>
+  </section>
+
+  <!-- VENUE SECTION -->
+  <section id="venue">
+    <div class="bg-zoom"></div>
+    <div class="chandelier-glow"></div>
+    <div class="luxury-overlay"></div>
+    <div class="sparkles"></div>
+    <div class="grain"></div>
+    
+    <div class="content glass-card royal-frame">
+      <div class="eyebrow">The Destination</div>
+      <div class="venue-card">
+        <p class="venue-name" id="venueName">Nasrin's Home</p>
+        <p class="venue-detail" id="venueDate">Sunday, 19th September 2027</p>
+        <p class="venue-detail" id="venueTime">12:00 PM onwards</p>
+        <iframe class="map-embed" id="mapEmbed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <a class="btn" id="directionsBtn" target="_blank" rel="noopener">
+          <span>Get Directions</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CLOSING SECTION -->
+  <section id="closing">
+    <div class="bg-zoom"></div>
+    <div class="chandelier-glow"></div>
+    <div class="luxury-overlay"></div>
+    <div class="sparkles"></div>
+    <div class="grain"></div>
+    
+    <div class="content glass-card royal-frame">
+      <div class="royal-crest">
+        <span class="crest-line"></span>
+        <span class="crest-emblem">❦</span>
+        <span class="crest-line"></span>
+      </div>
+      <p class="closing">With love, we can't wait to celebrate with you.</p>
+      <div class="rule-royal">
+        <span></span><i>♦</i><span></span>
+      </div>
+      <p class="eyebrow" style="margin-top:14px; letter-spacing:0.35em;">SHIFAN &amp; NASRIN · 19.09.2027</p>
+    </div>
+  </section>
+
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>
