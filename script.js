@@ -2,8 +2,8 @@
 const CONFIG = {
   groom: "Shifan",
   bride: "Nasrin",
-  weddingISO: "2027-09-19T12:00:00",
-  dateDisplay: "19th September 2027",
+  weddingISO: "2026-10-10T12:00:00",
+  dateDisplay: "10th October 2026",
   timeDisplay: "12:00 PM",
   venueName: "Nasrin's Home",
   venueAddress: "Nasrin's Home, Negombo, Sri Lanka",
@@ -18,13 +18,13 @@ document.getElementById('messageText').textContent = CONFIG.message;
 document.getElementById('scratchDate').textContent = CONFIG.dateDisplay.toUpperCase();
 document.getElementById('scratchTime').textContent = CONFIG.timeDisplay;
 document.getElementById('venueName').textContent = CONFIG.venueName;
-document.getElementById('venueDate').textContent = 'Sunday, ' + CONFIG.dateDisplay;
+document.getElementById('venueDate').textContent = 'Saturday, ' + CONFIG.dateDisplay;
 document.getElementById('venueTime').textContent = CONFIG.timeDisplay + ' onwards';
 document.getElementById('directionsBtn').href = CONFIG.mapsDirectionsLink;
 document.getElementById('mapEmbed').src = 'https://www.google.com/maps?q=' + encodeURIComponent(CONFIG.venueAddress) + '&output=embed';
 if (CONFIG.musicSrc) document.getElementById('bgm').src = CONFIG.musicSrc;
 
-/* ================= AUDIO ENGINE (Synthesized Background & Sound Effects) ================= */
+/* ================= AUDIO ENGINE ================= */
 const AudioEngine = (() => {
   let ctx, master, musicGain, sfxGain, noiseBuffer;
   let musicNodes = [], musicPlaying = false;
@@ -108,7 +108,6 @@ const AudioEngine = (() => {
     ensureCtx();
     const t = ctx.currentTime;
 
-    // 1. Sudden pressurized POP / CANNON BANG
     const snapOsc = ctx.createOscillator();
     const snapGain = ctx.createGain();
     snapOsc.type = 'triangle';
@@ -121,7 +120,6 @@ const AudioEngine = (() => {
     snapOsc.start(t);
     snapOsc.stop(t + 0.14);
 
-    // 2. Air burst / confetti hiss
     const burstSrc = ctx.createBufferSource();
     burstSrc.buffer = noiseBuffer;
     const burstFilter = ctx.createBiquadFilter();
@@ -136,7 +134,6 @@ const AudioEngine = (() => {
     burstSrc.start(t);
     burstSrc.stop(t + 0.36);
 
-    // 3. Celebratory rising chime cascade
     const notes = [523.25, 659.25, 783.99, 1046.5, 1318.5];
     notes.forEach((freq, i) => {
       const osc = ctx.createOscillator();
