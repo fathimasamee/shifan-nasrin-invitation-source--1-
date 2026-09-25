@@ -24,7 +24,7 @@ document.getElementById('directionsBtn').href = CONFIG.mapsDirectionsLink;
 document.getElementById('mapEmbed').src = 'https://www.google.com/maps?q=' + encodeURIComponent(CONFIG.venueAddress) + '&output=embed';
 if (CONFIG.musicSrc) document.getElementById('bgm').src = CONFIG.musicSrc;
 
-/* ================= AUDIO ENGINE (With Party Popper Sound) ================= */
+/* ================= AUDIO ENGINE (Synthesized Background & Sound Effects) ================= */
 const AudioEngine = (() => {
   let ctx, master, musicGain, sfxGain, noiseBuffer;
   let musicNodes = [], musicPlaying = false;
@@ -104,7 +104,6 @@ const AudioEngine = (() => {
     scratchSource = null; scratchGain = null; scratchFilter = null;
   }
 
-  // Realistic synthesized party popper crack & explosion sound
   function playPopperSound(){
     ensureCtx();
     const t = ctx.currentTime;
@@ -138,7 +137,7 @@ const AudioEngine = (() => {
     burstSrc.stop(t + 0.36);
 
     // 3. Celebratory rising chime cascade
-    const notes = [523.25, 659.25, 783.99, 1046.5, 1318.5]; // C E G C E
+    const notes = [523.25, 659.25, 783.99, 1046.5, 1318.5];
     notes.forEach((freq, i) => {
       const osc = ctx.createOscillator();
       const g = ctx.createGain();
@@ -248,7 +247,6 @@ function checkCleared(){
     canvas.style.opacity = '0';
     scratchHint.textContent = '✦ your special day is revealed ✦';
     
-    // Trigger celebratory party poppers & audio
     triggerPoppers();
     AudioEngine.playPopperSound();
     showRevealPopup();
@@ -287,7 +285,6 @@ function triggerPoppers(){
   const colors = ['#f5e2b3', '#d4af37', '#ffffff', '#e6b9ac', '#ffd97d', '#c9a24c'];
   const confettiCount = 75;
 
-  // Left & right popper origins
   const origins = [
     { x: window.innerWidth * 0.1, y: window.innerHeight * 0.95, angleMin: -80, angleMax: -20 },
     { x: window.innerWidth * 0.9, y: window.innerHeight * 0.95, angleMin: -160, angleMax: -100 }
@@ -298,7 +295,6 @@ function triggerPoppers(){
       const el = document.createElement('div');
       el.className = 'confetti-piece';
 
-      // Shape variation: rectangles, ribbons, stars
       const isRibbon = Math.random() > 0.65;
       const w = isRibbon ? 4 + Math.random() * 4 : 8 + Math.random() * 8;
       const h = isRibbon ? 16 + Math.random() * 14 : 7 + Math.random() * 7;
@@ -308,7 +304,6 @@ function triggerPoppers(){
       el.style.borderRadius = isRibbon ? '3px' : (Math.random() > 0.5 ? '50%' : '1px');
       el.style.boxShadow = '0 0 10px rgba(212,175,55,0.7)';
 
-      // Trajectory physics
       const angle = (origin.angleMin + Math.random() * (origin.angleMax - origin.angleMin)) * (Math.PI / 180);
       const velocity = 550 + Math.random() * 650;
       const destX = Math.cos(angle) * velocity;
@@ -322,20 +317,9 @@ function triggerPoppers(){
       document.body.appendChild(el);
 
       el.animate([
-        {
-          transform: 'translate(0, 0) rotate(0deg) scale(0.6)',
-          opacity: 1
-        },
-        {
-          transform: `translate(${destX * 0.6}px, ${destY}px) rotate(${rotZ * 0.5}deg) rotateX(${rotX * 0.5}deg) scale(1.1)`,
-          opacity: 1,
-          offset: 0.4
-        },
-        {
-          transform: `translate(${destX}px, ${destY + 450}px) rotate(${rotZ}deg) rotateX(${rotX}deg) scale(0.85)`,
-          opacity: 0,
-          offset: 1
-        }
+        { transform: 'translate(0, 0) rotate(0deg) scale(0.6)', opacity: 1 },
+        { transform: `translate(${destX * 0.6}px, ${destY}px) rotate(${rotZ * 0.5}deg) rotateX(${rotX * 0.5}deg) scale(1.1)`, opacity: 1, offset: 0.4 },
+        { transform: `translate(${destX}px, ${destY + 450}px) rotate(${rotZ}deg) rotateX(${rotX}deg) scale(0.85)`, opacity: 0, offset: 1 }
       ], {
         duration: duration,
         easing: 'cubic-bezier(0.18, 0.89, 0.32, 1.28)',
@@ -373,3 +357,28 @@ document.querySelectorAll('.scroll-cue').forEach(cue => {
     }
   });
 });
+
+/* ================= HEART TALES MODAL HANDLER ================= */
+const studioModal = document.getElementById('studioModal');
+const studioBadgeBtn = document.getElementById('studioBadgeBtn');
+const closeStudioBtn = document.getElementById('closeStudioBtn');
+const closeStudioBackdrop = document.getElementById('closeStudioBackdrop');
+
+function toggleStudioModal(show) {
+  if (!studioModal) return;
+  if (show) {
+    studioModal.classList.add('open');
+  } else {
+    studioModal.classList.remove('open');
+  }
+}
+
+if (studioBadgeBtn) {
+  studioBadgeBtn.addEventListener('click', () => toggleStudioModal(true));
+}
+if (closeStudioBtn) {
+  closeStudioBtn.addEventListener('click', () => toggleStudioModal(false));
+}
+if (closeStudioBackdrop) {
+  closeStudioBackdrop.addEventListener('click', () => toggleStudioModal(false));
+}

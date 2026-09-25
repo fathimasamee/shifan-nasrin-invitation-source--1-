@@ -32,7 +32,13 @@
 <div class="curtain" id="curtainL"></div>
 <div class="curtain" id="curtainR"></div>
 
-<!-- MUSIC -->
+<!-- FLOATING WATERMARK SEAL (BOTTOM LEFT) -->
+<button id="studioBadgeBtn" class="studio-badge" aria-label="Crafted by Heart Tales">
+  <span class="badge-emblem">✦</span>
+  <span class="badge-text">Heart Tales</span>
+</button>
+
+<!-- MUSIC TOGGLE (BOTTOM RIGHT) -->
 <button id="musicBtn" aria-label="Toggle music">
   <span class="bars"><span></span><span></span><span></span></span>
 </button>
@@ -178,6 +184,31 @@
   </section>
 
 </main>
+
+<!-- HEART TALES MODAL -->
+<div id="studioModal" class="studio-modal">
+  <div class="studio-modal-backdrop" id="closeStudioBackdrop"></div>
+  <div class="studio-card glass-card royal-frame">
+    <button class="studio-close" id="closeStudioBtn" aria-label="Close">&times;</button>
+    <div class="royal-crest">
+      <span class="crest-line"></span>
+      <span class="crest-emblem">✦</span>
+      <span class="crest-line"></span>
+    </div>
+    <div class="eyebrow">Digital Atelier</div>
+    <h3 class="studio-name">Heart Tales</h3>
+    <p class="studio-tagline">Bespoke Interactive Invitations &amp; Wedding Websites</p>
+    <div class="rule-royal"><span></span><i>♦</i><span></span></div>
+    
+    <p class="studio-desc">Looking to create an elegant, interactive digital invitation for your wedding or special celebration?</p>
+    
+    <div class="studio-actions">
+      <a href="https://whatsapp.com/channel/0029VbCZhAz2phHSqh806r1R" target="_blank" rel="noopener" class="btn studio-btn">
+        <span>Join on WhatsApp</span>
+      </a>
+    </div>
+  </div>
+</div>
 
 <script src="script.js"></script>
 </body>

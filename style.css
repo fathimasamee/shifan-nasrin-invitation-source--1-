@@ -497,18 +497,6 @@ section {
 }
 
 /* ============ PARTY POPPER CANNONS & CONFETTI ============ */
-.cannon-blast {
-  position: fixed;
-  bottom: 0;
-  z-index: 128;
-  width: 14px;
-  height: 14px;
-  border-radius: 50%;
-  pointer-events: none;
-}
-.cannon-left { left: 5%; }
-.cannon-right { right: 5%; }
-
 .confetti-piece {
   position: fixed;
   z-index: 129;
@@ -626,6 +614,47 @@ section {
   color: var(--gold-bright);
 }
 
+/* ============ FLOATING HEART TALES WATERMARK BADGE ============ */
+.studio-badge {
+  position: fixed;
+  left: 18px;
+  bottom: calc(20px + var(--safe-b));
+  z-index: 60;
+  height: 38px;
+  padding: 0 14px 0 11px;
+  border-radius: 20px;
+  border: 1px solid rgba(212, 175, 55, 0.45);
+  background: rgba(5, 10, 18, 0.72);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  cursor: pointer;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.7), 0 0 15px rgba(212, 175, 55, 0.15);
+  transition: transform 0.3s ease, border-color 0.3s ease, background 0.3s ease;
+}
+
+.studio-badge:hover {
+  transform: translateY(-2px) scale(1.03);
+  border-color: var(--gold-bright);
+  background: rgba(5, 10, 18, 0.9);
+}
+
+.badge-emblem {
+  font-size: 0.72rem;
+  color: var(--gold-bright);
+}
+
+.badge-text {
+  font-family: 'Playfair Display', serif;
+  font-size: 0.78rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--gold-light);
+  font-weight: 500;
+}
+
 /* ============ MUSIC TOGGLE ============ */
 #musicBtn {
   position: fixed;
@@ -700,6 +729,101 @@ section {
   opacity: 0.9;
   margin-top: 6px;
   color: var(--cream);
+}
+
+/* ============ STUDIO WATERMARK MODAL ============ */
+.studio-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 150;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.4s ease, visibility 0.4s ease;
+}
+
+.studio-modal.open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.studio-modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(3, 6, 12, 0.85);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.studio-card {
+  position: relative;
+  z-index: 1;
+  width: min(90vw, 420px);
+  padding: 38px 28px 32px;
+  text-align: center;
+  transform: scale(0.92) translateY(12px);
+  transition: transform 0.4s cubic-bezier(0.2, 0.9, 0.3, 1.2);
+}
+
+.studio-modal.open .studio-card {
+  transform: scale(1) translateY(0);
+}
+
+.studio-close {
+  position: absolute;
+  top: 14px;
+  right: 18px;
+  font-size: 1.8rem;
+  color: var(--gold-light);
+  cursor: pointer;
+  line-height: 1;
+  opacity: 0.75;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.studio-close:hover {
+  opacity: 1;
+  transform: scale(1.15);
+}
+
+.studio-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.7rem;
+  font-weight: 600;
+  color: var(--gold-bright);
+  margin: 0 0 6px;
+  letter-spacing: 0.04em;
+}
+
+.studio-tagline {
+  font-size: 0.88rem;
+  letter-spacing: 0.1em;
+  color: var(--gold-light);
+  opacity: 0.9;
+  margin: 0;
+}
+
+.studio-desc {
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: var(--cream);
+  margin: 18px 0 22px;
+}
+
+.studio-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+
+.studio-btn {
+  margin-top: 0;
+  width: 100%;
+  max-width: 270px;
 }
 
 /* ============ MOBILE ACCESSIBILITY ============ */
